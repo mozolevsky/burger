@@ -10,11 +10,6 @@
     font-weight: bold;
 }
 
-.Button:first-of-type {
-    margin-left: 0;
-    padding-left: 0;
-}
-
 .Success {
     color: #5C9210;
 }

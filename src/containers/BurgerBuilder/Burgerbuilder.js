@@ -18,70 +18,12 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: true});
     }
 
-    // updatePurchaseState = (ingredients) => {
-    //     const sum = Object.keys(ingredients).map(
-    //         ingrKey => {
-    //             return ingredients[ingrKey]
-    //         }
-    //     ).reduce(
-    //         (currentSum, elem) => {
-    //             return currentSum + elem;
-    //     }, 0)
-
-    //     this.setState({purchasable: sum > 0});
-    // }
-
-    // updatePrice = (ingredients) => {
-    //     // let newPrice = null;
-
-    //     // for (let ingredient in ingredients) {
-    //     //     newPrice += ingredients[ingredient] * INGREDIENT_PRICES[ingredient];
-    //     // }
-
-    //     // this.setState({totalPrice: newPrice.toFixed(2)});
-    // }
-
-    // addIngredientHandler = (type) => {
-    //     const updatedIngredient = this.state.ingredients[type] + 1;
-    //     const updatedIngredientList = {...this.state.ingredients};
-    //     updatedIngredientList[type] = updatedIngredient;
-
-    //     this.setState({ingredients: updatedIngredientList});
-
-    //     this.updatePrice(updatedIngredientList);
-    //     this.updatePurchaseState(updatedIngredientList);
-    // }
-
-    // removeIngredientHandler = (type) => {
-    //     if (this.state.ingredients[type] >= 1) {
-    //         const updatedIngredient = this.state.ingredients[type] - 1;
-    //         const updatedIngredientList = {...this.state.ingredients};
-    //         updatedIngredientList[type] = updatedIngredient;
-    
-    //         this.setState({ingredients: updatedIngredientList});
-    
-    //         this.updatePrice(updatedIngredientList);
-    //         this.updatePurchaseState(updatedIngredientList);
-    //     }
-    // }
-
     purchaseCancelHandler = () => {
         this.setState({purchasing: false});
     }
 
     purchaseContinueHandler = () => {
-        const queryParams = [];         
-        for (let i in this.state.ingredients) {
-            queryParams.push(`${encodeURIComponent(i)}=${encodeURIComponent(this.state.ingredients[i])}`);
-        } 
-
-        queryParams.push('price=' + this.props.totalPrice);
-        const queryString = queryParams.join("&");
-
-        this.props.history.push({
-            pathname: '/checkout',
-            search: `?${queryString}`
-        });
+        this.props.history.push({pathname: '/checkout'});
     }
 
     render() {

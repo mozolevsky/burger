@@ -149,8 +149,6 @@ class ContactData extends Component {
             validitionFormStatus = updatedFormDataLevel1[input].isValid && validitionFormStatus;
         }
 
-        console.log(validitionFormStatus);
-
         this.setState({
             orderForm: updatedFormDataLevel1,
             formValid: validitionFormStatus

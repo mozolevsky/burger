@@ -6,13 +6,15 @@ import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions'
-import axios from '../../axios-orders';
 
 class BurgerBuilder extends Component {
     state = {
         purchasing: false,
-        loading: false,
-        error: false
+        loading: false
+    }
+
+    componentDidMount() {
+        this.props.onLoadIngs()
     }
 
     purchaseHandler = () => {
@@ -36,13 +38,10 @@ class BurgerBuilder extends Component {
             disabledInfo[key] = disabledInfo[key] <= 0;
         }
 
-        const {
-            purchasing,
-            error
-        } = this.state;
+        const {purchasing} = this.state;
 
         let orderSummary = null;
-        let burger = error ? <p>Problem with ingredients loading</p> : <Spinner />;
+        let burger = this.props.error ? <p>Problem with ingredients loading</p> : <Spinner />;
 
        if (this.props.ings) {
             orderSummary = (
@@ -88,14 +87,16 @@ const mapStateToProps = state => {
     return {
         ings: state.ingredients,
         totalPrice: state.totalPrice,
-        purchasable: state.purchasable
+        purchasable: state.purchasable,
+        error: state.error
     }
 }
 
 const mapDispachToProps = dispatch => {
     return {
         onIngredientAdded: ingName => dispatch(actions.addIngredient(ingName)),
-        onIngredientRemoved: ingName => dispatch(actions.removeIngredient(ingName))
+        onIngredientRemoved: ingName => dispatch(actions.removeIngredient(ingName)),
+        onLoadIngs: () => dispatch(actions.loadIngsFromServer())
     }
 }
 

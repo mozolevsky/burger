@@ -1,4 +1,4 @@
-import {toFixNumber} from '../../utils/utils'
+import {toFixNumber} from '../../../utils/utils'
 
 export function addIngredientReducer(state, action, prices) {
     let updatedTotalPrice = state.totalPrice + prices[action.ingredientName];

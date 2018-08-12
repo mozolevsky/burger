@@ -1,4 +1,4 @@
-import {REMOVE_INGREDIENT} from './actionTypes'
+import {REMOVE_INGREDIENT} from '../actionTypes'
 
 export const removeIngredient = ingName => {
     return {

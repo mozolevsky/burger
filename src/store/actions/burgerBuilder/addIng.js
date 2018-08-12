@@ -1,4 +1,4 @@
-import {ADD_INGREDIENT} from './actionTypes'
+import {ADD_INGREDIENT} from '../actionTypes'
 
 export const addIngredient = ingName => {
     return {

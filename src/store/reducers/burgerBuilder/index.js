@@ -1,9 +1,9 @@
-import {initialState, INGREDIENT_PRICES} from '../initialData'
-import * as actionTypes from '../actions/actionTypes'
-import {removeIngredientReducer} from './burgerBuilder/removeIngredientReducer'
-import {addIngredientReducer} from './burgerBuilder/addIngredientReducer'
-import {loadIngrsReducer} from './burgerBuilder/loadIngsReducer'
-import {faildToFechIngsReducer} from './burgerBuilder/fiaildIngsFechReducer';
+import {initialState, INGREDIENT_PRICES} from './initialData'
+import * as actionTypes from '../../actions/actionTypes'
+import {removeIngredientReducer} from './removeIngredientReducer'
+import {addIngredientReducer} from './addIngredientReducer'
+import {loadIngrsReducer} from './loadIngsReducer'
+import {faildToFechIngsReducer} from './fiaildIngsFechReducer';
 
 export default function reducer(state = initialState, action) {
     switch(action.type) {

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Button from '../../../components/UI/Button/Button';
-import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import {connect} from 'react-redux';
 import classes from './ContactData.css';
@@ -112,7 +111,6 @@ class ContactData extends Component {
             formData[fieldName] = this.state.orderForm[fieldName].value;
         }
 
-
         const order = {
             ingredients: this.props.ingr,
             price: this.props.price,
@@ -149,7 +147,6 @@ class ContactData extends Component {
     }
 
     render() {
-        let form = null;
         let inputsArray = [];
 
         for (let key in this.state.orderForm) {
@@ -158,11 +155,10 @@ class ContactData extends Component {
                 id: key
             });
         }
-        
-        if (this.props.loading) {
-            form = <Spinner/>
-        } else {
-            form = (
+
+        return (
+            <div className={classes.ContactData}>
+                <h4>Enter your Contacts</h4>
                 <form onSubmit={this.orderHandler}>
                     {inputsArray.map(
                         elem => <Input
@@ -177,13 +173,6 @@ class ContactData extends Component {
                     )}
                     <Button btnType="Success" disabled={!this.state.formValid}>Order</Button>
                 </form>
-            )
-        }
-
-        return (
-            <div className={classes.ContactData}>
-                <h4>Enter your Contacts</h4>
-                {form}
             </div>
         )
     }
@@ -192,8 +181,7 @@ class ContactData extends Component {
 const mapStateToProps = state => {
     return {
         ingr: state.burgerBuilder.ingredients,
-        price: state.burgerBuilder.totalPrice,
-        loading: state.order.loading
+        price: state.burgerBuilder.totalPrice
     }
 }
 

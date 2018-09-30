@@ -2,16 +2,20 @@ import * as actionTypes from '../../actions/actionTypes'
 import {
     sendOrderSuccess, 
     sendOrderFail,
-    sendOrder
+    sendOrder,
+    purchaseInit
 } from './sentOrder'
 
 const initialState = {
     orders: [],
-    loading: true
+    loading: true,
+    purchased: false
 }
 
 const reducer = (state = initialState, action) => {
     switch(action.type) {
+        case actionTypes.PURCHASE_INIT:
+            return purchaseInit(state, action)
         case actionTypes.SEND_ORDER:
             return sendOrder(state, action)
 

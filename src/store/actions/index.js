@@ -3,5 +3,6 @@ export {removeIngredient} from './burgerBuilder/removeIng'
 export {loadIngsFromServer} from './burgerBuilder/initIngredients'
 
 export {
-    sentOrder
+    sentOrder,
+    purchaseInit
 } from './orders/sentOrder'

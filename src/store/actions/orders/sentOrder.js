@@ -1,7 +1,8 @@
 import {
     SENT_ORDER_SUCCESS,
     SENT_ORDER_FAIL,
-    SEND_ORDER
+    SEND_ORDER,
+    PURCHASE_INIT
 } from '../actionTypes'
 import axios from '../../../axios-orders';
 
@@ -37,5 +38,11 @@ export const sentOrder = orderData => {
             .catch(error => {
                 dispatch(sentOrderFail(error))
             });
+    }
+}
+
+export const purchaseInit = () => {
+    return {
+        type: PURCHASE_INIT
     }
 }

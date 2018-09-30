@@ -6,7 +6,9 @@ export function sendOrderSuccess(state, action) {
     }
     return {
         ...state,
-        loading: false, 
+        totalPrice: 0,
+        loading: false,
+        purchased: true,
         orders: state.orders.concat(newOrder)
     }
 }
@@ -22,5 +24,12 @@ export function sendOrder(state, action) {
     return {
         ...state,
         loading: true
+    }
+}
+
+export function purchaseInit(state, action) {
+    return {
+        ...state,
+        purchased: false
     }
 }

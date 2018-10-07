@@ -2,5 +2,10 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "allowJs": true
+    },
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
     }
 }
